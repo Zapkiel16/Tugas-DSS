@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simulasi Sistem Pendukung Keputusan metode SAW dan Weighted Product.">
+  <title>Lab Keputusan — Simulasi SAW & WP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">▦</span><span>Lab Keputusan</span></a>
+    <nav>
+      <a class="nav-link active" href="#simulasi">◇ <span>Simulasi</span></a>
+      <a class="nav-link" href="#hasil">▥ <span>Hasil peringkat</span></a>
+      <a class="nav-link" href="#perhitungan">☷ <span>Langkah perhitungan</span></a>
+    </nav>
+    <div class="sidebar-footer">Sistem Pendukung Keputusan</div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header" id="simulasi">
+      <div>
+        <p class="eyebrow">SIMULATOR SPK</p>
+        <h1>Simulasi SAW &amp; WP</h1>
+        <p class="subtitle">Bandingkan Simple Additive Weighting dan Weighted Product dalam satu kasus.</p>
+      </div>
+      <button class="button button-light" id="sampleBtn" type="button">↻ &nbsp; Muat data contoh</button>
+    </header>
+
+    <section class="input-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <div><h2>Kriteria &amp; bobot</h2><p>Atur kepentingan dan jenis tiap kriteria.</p></div>
+          <span class="panel-icon">☷</span>
+        </div>
+        <div class="table-scroll">
+          <table class="input-table" id="criteriaTable">
+            <thead><tr><th>Kriteria</th><th>Jenis</th><th>Bobot</th><th></th></tr></thead>
+            <tbody id="criteriaBody"></tbody>
+          </table>
+        </div>
+        <div class="panel-actions">
+          <button class="text-button" id="addCriteriaBtn" type="button">＋ Tambah kriteria</button>
+          <span class="total-badge">Total bobot <strong id="weightTotal">100</strong></span>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div><h2>Matriks keputusan</h2><p>Masukkan nilai setiap alternatif pada tiap kriteria.</p></div>
+          <span class="panel-icon">▦</span>
+        </div>
+        <div class="table-scroll">
+          <table class="input-table matrix-input" id="matrixTable">
+            <thead id="matrixHead"></thead>
+            <tbody id="alternativeBody"></tbody>
+          </table>
+        </div>
+        <div class="panel-actions">
+          <button class="text-button" id="addAlternativeBtn" type="button">＋ Tambah alternatif</button>
+          <span class="hint">Gunakan angka lebih besar dari 0.</span>
+        </div>
+      </article>
+    </section>
+
+    <div class="calculate-strip">
+      <p><strong>Benefit</strong> mengutamakan nilai besar, <strong>Cost</strong> mengutamakan nilai kecil.</p>
+      <button class="button button-primary" id="calculateBtn" type="button">Hitung SAW &amp; WP <span>→</span></button>
+    </div>
+    <p class="error-message" id="errorMessage" role="alert"></p>
+
+    <section id="hasil" class="results-section">
+      <div class="section-heading"><div><h2>Hasil peringkat</h2><p id="resultSummary">Jalankan perhitungan untuk melihat hasil.</p></div></div>
+      <div class="result-grid">
+        <article class="panel result-panel saw-panel">
+          <div class="result-heading"><h3>SAW</h3><p>Simple Additive Weighting</p></div>
+          <div class="table-scroll"><table class="result-table"><thead><tr><th>Peringkat</th><th>Alternatif</th><th>Skor</th><th></th></tr></thead><tbody id="sawResults"><tr><td colspan="4" class="empty-state">Belum ada hasil perhitungan.</td></tr></tbody></table></div>
+        </article>
+        <article class="panel result-panel wp-panel">
+          <div class="result-heading"><h3>WP</h3><p>Weighted Product</p></div>
+          <div class="table-scroll"><table class="result-table"><thead><tr><th>Peringkat</th><th>Alternatif</th><th>Skor</th><th></th></tr></thead><tbody id="wpResults"><tr><td colspan="4" class="empty-state">Belum ada hasil perhitungan.</td></tr></tbody></table></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="perhitungan" class="steps-section">
+      <div class="section-heading"><div><h2>Langkah perhitungan</h2><p>Telusuri bobot, matriks normalisasi, dan vektor WP.</p></div></div>
+      <div id="calculationSteps">
+        <article class="panel empty-steps">Langkah perhitungan akan ditampilkan setelah tombol <strong>Hitung SAW &amp; WP</strong> ditekan.</article>
+      </div>
+      <p class="footnote">Tampilan angka menggunakan pembulatan 4 desimal. Perhitungan peringkat menggunakan nilai presisi penuh.</p>
+    </section>
+    <footer>Metode yang digunakan: <a href="https://en.wikipedia.org/wiki/Weighted_sum_model" target="_blank" rel="noopener">SAW</a> dan <a href="https://en.wikipedia.org/wiki/Weighted_product_model" target="_blank" rel="noopener">WP</a>.</footer>
+  </main>
+</body>
+</html>
